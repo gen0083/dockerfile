@@ -1,0 +1,20 @@
+#!/bin/bash
+
+echo "Waiting for emulator to start..."
+
+while true; do
+
+  # エミュレータを待って10分以上経過していたら異常として終了する
+  if [ $SECONDS -ge 600 ]; then
+    echo "I can't wait for emulator any more!!"
+    exit 1;
+  fi
+
+  BOOTUP=$(adb shell getprop init.svc.bootanim | grep -oe  '[a-z]\+')
+  if [[ "$BOOTUP" = "stopped" ]]; then
+    break
+  fi
+
+  echo "Got: '$BOOTUP', waiting for 'stopped'"
+  sleep 5
+done

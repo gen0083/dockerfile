@@ -1,0 +1,16 @@
+#!/bin/bash
+
+PORT=5554
+echo "Starting emulator[$PORT]..."
+emulator -avd test -force-32bit -no-skin -no-audio -no-window -port $PORT &
+wait-for-emulator
+
+sleep 10
+# disable animation on emulator
+adb shell settings put global window_animation_scale 0
+adb shell settings put global transition_animation_scale 0
+adb shell settings put global animator_duration_scale 0
+# disable lockscreen on emulator
+adb shell settings put secure lockscreen.disabled 1
+# send key event to escape lockscreen
+adb shell input keyevent 82
