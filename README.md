@@ -27,3 +27,11 @@ SDKのアップデートを行うためにキャッシュを使いたくない�
 
 1. `docker images`でイメージIDを確認
 1. `docker rmi イメージID`で削除
+
+## docker for Mac
+
+コンテナやイメージを削除してもディスクスペースが開放されないバグがある。
+
+https://github.com/docker/for-mac/issues/371
+
+~/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux/Docker.qcow2を手動で削除する
