@@ -3,17 +3,19 @@ gen0083/android-sdk
 
 ## Dockerfileからイメージ復元
 
-1. カレントディレクトリにDockerfileがある状態で`docker build -t リポジトリ名 .`
+1. カレントディレクトリにDockerfileがある状態で`docker build -t gen0083/android-sdk .`
 
 SDKのアップデートを行うためにキャッシュを使いたくない場合は`--no-cache`オプションをつける。
 
 ## イメージの動作確認
 
-`docker run -it コンテナ`
+`docker run -it gen0083/android-sdk`
 
 ## DockerHubへpush
 
-`docker push リポジトリ`
+`docker login`でDocker Hubにログイン
+
+`docker push gen0083/android-sdk`でイメージをdocker hubに登録
 
 ## コンテナの削除
 
