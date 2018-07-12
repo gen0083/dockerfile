@@ -2,7 +2,7 @@
 
 PORT=5554
 echo "Starting emulator[$PORT]..."
-emulator -avd test -force-32bit -no-skin -no-audio -no-window -port $PORT &
+emulator -avd test21 -no-skin -no-audio -no-window -port $PORT &
 wait-for-emulator
 
 sleep 10

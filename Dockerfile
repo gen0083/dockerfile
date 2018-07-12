@@ -43,7 +43,9 @@ ENV GRADLE_OPTS '-Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError
 RUN echo y | android update sdk --no-ui --all --filter "tools"
 RUN echo y | android update sdk --no-ui --all --filter "platform-tools"
 RUN echo y | android update sdk --no-ui --all --filter "android-19,sys-img-armeabi-v7a-android-19"
-RUN echo no | android create avd --force -n test -t android-19 --abi armeabi-v7a
+RUN echo no | android create avd --force -n test19 -t android-19 --abi armeabi-v7a
 RUN echo y | android update sdk --no-ui --all --filter "extra-android-m2repository"
 RUN echo y | android update sdk --no-ui --all --filter "extra-google-google_play_services"
 RUN echo y | android update sdk --no-ui --all --filter "extra-google-m2repository"
+RUN echo y | android update sdk --no-ui --all --filter "android-21,sys-img-armeabi-v7a-android-21"
+RUN echo no | android create avd --force -n test21 -t android-21 --abi armeabi-v7a
