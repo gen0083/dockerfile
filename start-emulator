@@ -2,7 +2,7 @@
 
 PORT=5554
 echo "Starting emulator[$PORT]..."
-emulator -avd test21 -no-skin -no-audio -no-window -port $PORT &
+emulator64-arm -avd test21 -no-skin -no-audio -no-window -gpu off -verbose -port $PORT -timezone Etc/UTC -qemu -vnc :0 &
 wait-for-emulator
 
 sleep 10

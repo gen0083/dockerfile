@@ -31,8 +31,6 @@ ENV PATH $ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$PATH
 
 RUN apt-get install -y git
 RUN mkdir $ANDROID_HOME/licenses
-ADD start-emulator /usr/local/bin/
-ADD wait-for-emulator /usr/local/bin/
 ADD android-sdk-license $ANDROID_HOME/licenses/android-sdk-license
 
 # Support Gradle
@@ -49,3 +47,9 @@ RUN echo y | android update sdk --no-ui --all --filter "extra-google-google_play
 RUN echo y | android update sdk --no-ui --all --filter "extra-google-m2repository"
 RUN echo y | android update sdk --no-ui --all --filter "android-21,sys-img-armeabi-v7a-android-21"
 RUN echo no | android create avd --force -n test21 -t android-21 --abi armeabi-v7a
+
+# add shell scripts for emulator
+ADD start-emulator /usr/local/bin/
+ADD wait-for-emulator /usr/local/bin/
+RUN mkdir /usr/local/android-sdk-linux/tools/keymaps \
+  && touch /usr/local/android-sdk-linux/tools/keymaps/en-us
